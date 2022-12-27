@@ -1,0 +1,406 @@
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+   scroll-behavior: auto;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100&family=Roboto+Condensed&display=swap');
+
+/*
+ *  White theme colors
+ */
+
+$white: #fff;
+$black: #130F1C;
+$black-medium: #1F1B29;
+$gray-dark: #484848;
+$gray-medium: #BAB9BD;
+$gray-white: #FAFAFA;
+$gray-white2: #E9E9E9;
+$orange: #FD7918;
+$blue: #651FFF;
+
+/*
+ *  Dark theme colors
+ */
+
+
+body {
+  background-color: #E5E5E5;
+  font-family: 'Poppins', sans-serif;
+  font-family: 'Roboto Condensed', sans-serif;
+  padding: 0 50px;
+}
+
+.main-wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.form-section__heading-wrap {
+  border-bottom: 1px solid #E5E5E5;
+  padding: 16px 26px;
+}
+.form-section__heading {
+    color: $black;
+    font-size: 30px;
+    font-weight: 700;
+}
+.form-section__form-wrap {
+  display: flex;
+  overflow-y: scroll;
+  justify-content: center;
+  padding: 50px;
+}
+
+
+
+/*
+ *  Forms
+ */
+
+
+.form {
+  background-color: $white;
+  box-shadow: 40px 40px 60px rgba(0, 0, 0, 0.1);
+  padding: 32px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  width: 100%;
+  min-width: 343px;
+
+  &.narrow-form {
+    max-width: 428px;
+  }
+
+  &.wide-form {
+    container: wideForm / inline-size;
+    max-width: 665px;
+  }
+}
+.form__link {
+  color: $blue;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  text-decoration: underline;
+  text-align: center;
+}
+.form__hr {
+  border: 1px solid #ECECEE;
+}
+.form__elem-wrap {
+  padding: 16px 0;
+
+  &.txt-center {
+    text-align: center;
+  }
+  &.flex {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+  }
+}
+.form__btn {
+  background-position: center center;
+  background-repeat: no-repeat;
+  border: 1px solid #ECECEE;
+  border-radius: 5px;
+  display: inline-block;
+  flex-grow: 1;
+  padding: 12px;
+
+  &.social-fb {
+    background-image: url('/assets/images/social-fb.svg');
+    height: 48px;
+  }
+  &.social-google {
+    background-image: url('/assets/images/social-google.svg');
+    height: 48px;
+  }
+}
+.form__label {
+  user-select: none;
+  width: 100%;
+}
+.form__input {
+  background-color: $gray-white;
+  border: 2px solid transparent;
+  border-radius: 5px;
+  color: $black;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  outline: none;
+  padding: 12px 14px 12px 12px;
+  width: 100%;
+
+  &:focus {
+    border: 2px solid $blue;
+  }
+  &::placeholder {
+    color: $gray-medium;
+  }
+}
+
+.switch {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.switch__block{
+  position: relative;
+  display: inline-block;
+  width: 28px;
+  height: 16px;
+}
+.switch__chbox {
+  opacity: 0;
+  width: 0;
+  height: 0;
+
+  &:checked + .switch__slider {
+    background-color: $orange;
+  }
+
+  &:checked + .switch__slider::before {
+    -webkit-transform: translateX(12px);
+    -ms-transform: translateX(12px);
+    transform: translateX(12px);
+  }
+}
+.switch__slider {
+  border-radius: 16px;
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: $gray-white2;
+  -webkit-transition: .4s;
+  transition: .4s;
+
+  &::before {
+    border-radius: 50%;
+    position: absolute;
+    content: "";
+    height: 12px;
+    width: 12px;
+    left: 2px;
+    bottom: 2px;
+    background-color: $white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+}
+.switch__label {
+  cursor: pointer;
+  font-size: 14px;
+  user-select: none;
+}
+
+.checkbox {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  gap: 8px;
+}
+.checkbox__block {
+  position: relative;
+}
+.checkbox__checkmark {
+  background-color: $white;
+  border: 1px solid #D3D3D3;
+  border-radius: 4px;
+  height: 20px;
+  width: 20px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.checkbox__chbox {
+  cursor: pointer;
+  opacity: 0;
+  height: 0;
+  width: 0;
+  position: absolute;
+
+  &:checked ~ .checkbox__checkmark {
+    background-color: $orange;
+    background-image: center center url('/assets/images/check-mark.svg');
+    border: none;
+  }
+
+}
+.form__label-sm {
+
+}
+.form__textarea {
+  background-color: #F3F3F5;
+  border: none;
+  border-radius: 5px;
+  height: 152px;
+  width: 100%;
+  padding: 8px 12px;
+  resize: vertical;
+}
+
+.form__button {
+  background-color: $blue;
+  border-radius: 5px;
+  border: none;
+  color: $white;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  padding: 12px 24px;
+  width: 100%;
+
+  &:hover {
+    background-color: $orange;
+  }
+}
+
+.form__heading {
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 40px;
+}
+
+
+
+
+.form-section {
+  background-color: $gray-white;
+  border-radius: 10px;
+  margin: 20px 0;
+
+  &.dark-theme {
+    background-color: $black;
+    
+    .form-section__heading {
+      color: $white;
+    }
+
+    .form {
+      background-color: $black-medium;
+      color: #5A5761;
+    }
+    .form__elem-wrap {
+      fill: $white;
+    }
+    .form__label {
+      color: #BAB9BD;
+    }
+    .form__input::placeholder {
+      color: #5A5761;
+    }
+    .form__input {
+      background-color: #2E2A36;
+      color: #99969E;
+    }
+    .form__link {
+      color: $gray-medium;
+    }
+    .form__btn {
+      background-color: #2E2A36;
+      border-color: #2E2A36;
+      fill: $white;
+    }
+    .form__hr {
+      border-color: #635F6B;
+    }
+    .switch__label {
+      color: #BAB9BD;
+    }
+    .switch__slider {
+      background-color: #2E2A36;
+    }
+    .switch__chbox {
+      &:checked + .switch__slider {
+        background-color: $orange;
+      }
+    }
+  }
+}
+
+@container wideForm (max-width: 440px) {
+  .form__elem-wrap {
+    &.flex {
+      flex-wrap: wrap;
+    }
+  }
+}
