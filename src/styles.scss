@@ -108,6 +108,8 @@ body {
   justify-content: center;
 }
 .form-section__heading-wrap {
+  display: flex;
+  justify-content: space-between;
   border-bottom: 1px solid #E5E5E5;
   padding: 16px 26px;
 }
@@ -118,7 +120,6 @@ body {
 }
 .form-section__form-wrap {
   display: flex;
-  overflow-y: scroll;
   justify-content: center;
   padding: 50px;
 }
@@ -133,21 +134,38 @@ body {
 .form {
   background-color: $white;
   box-shadow: 40px 40px 60px rgba(0, 0, 0, 0.1);
-  padding: 32px;
+  border-radius: 10px;
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;
   width: 100%;
   min-width: 343px;
+  transition: background-color 0.5s ease;
 
   &.narrow-form {
     max-width: 428px;
   }
 
   &.wide-form {
+    display: flex;
     container: wideForm / inline-size;
     max-width: 665px;
   }
+}
+.form__main-form-block {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 32px;
+  width: 100%;
+}
+.form__info-block {
+  background-color: $blue;
+  border-radius: 10px 0px 0px 10px;
+  color: $white;
+  padding: 46px 16px;
+  width: 216px;
+  flex: 1 0 auto;
 }
 .form__link {
   color: $blue;
@@ -161,7 +179,6 @@ body {
   border: 1px solid #ECECEE;
 }
 .form__elem-wrap {
-  padding: 16px 0;
 
   &.txt-center {
     text-align: center;
@@ -171,13 +188,19 @@ body {
     justify-content: center;
     gap: 16px;
   }
+  &.flex-right {
+    display: flex;
+    justify-content: right;
+  }
+}
+.p-16 {
+  padding-top: 16px;
 }
 .form__btn {
   background-position: center center;
   background-repeat: no-repeat;
   border: 1px solid #ECECEE;
   border-radius: 5px;
-  display: inline-block;
   flex-grow: 1;
   padding: 12px;
 
@@ -205,6 +228,7 @@ body {
   outline: none;
   padding: 12px 14px 12px 12px;
   width: 100%;
+  transition: background-color 0.5s ease;
 
   &:focus {
     border: 2px solid $blue;
@@ -212,6 +236,20 @@ body {
   &::placeholder {
     color: $gray-medium;
   }
+}
+.form__select {
+  background-color: $gray-white;
+  border: 2px solid transparent;
+  border-radius: 5px;
+  color: $black;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  outline: none;
+  padding: 12px 14px 12px 12px;
+  width: 100%;
+  transition: background-color 0.5s ease;
 }
 
 .switch {
@@ -273,11 +311,13 @@ body {
 
 .checkbox {
   align-items: center;
-  cursor: pointer;
   display: flex;
   gap: 8px;
 }
 .checkbox__block {
+  display: inline-block;
+  height: 20px;
+  width: 20px;
   position: relative;
 }
 .checkbox__checkmark {
@@ -286,6 +326,7 @@ body {
   border-radius: 4px;
   height: 20px;
   width: 20px;
+  transition: background-color 0.5s ease;
   position: absolute;
   top: 0;
   left: 0;
@@ -298,26 +339,32 @@ body {
   position: absolute;
 
   &:checked ~ .checkbox__checkmark {
-    background-color: $orange;
-    background-image: center center url('/assets/images/check-mark.svg');
+    background: $orange url('/assets/images/check-mark.svg') no-repeat center center;
     border: none;
   }
 
 }
-.form__label-sm {
-
-}
 .form__textarea {
-  background-color: #F3F3F5;
+  background-color: $gray-white;
+  border: transparent;
+  outline: none;
   border: none;
   border-radius: 5px;
   height: 152px;
   width: 100%;
   padding: 8px 12px;
   resize: vertical;
+  transition: background-color 0.5s ease;
+
+  &:focus {
+    outline: 2px solid $blue;
+  }
+  &::placeholder {
+    color: $gray-medium;
+  }
 }
 
-.form__button {
+.button {
   background-color: $blue;
   border-radius: 5px;
   border: none;
@@ -326,8 +373,11 @@ body {
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;
-  padding: 12px 24px;
-  width: 100%;
+  padding: 12px 48px;
+
+  &.button--wide {
+    width: 100%;
+  }
 
   &:hover {
     background-color: $orange;
@@ -339,6 +389,59 @@ body {
   font-weight: 500;
   line-height: 40px;
 }
+.form__info__heading {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+}
+.form__info__txt {
+  display: inline-block;
+  padding: 32px 0;
+}
+.form__info__contacts {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 16px;
+}
+
+.form__row {
+  display: flex;
+  justify-content: space-between;
+  gap: 32px;
+
+  &.outer-row {
+    padding-top: 16px;
+  }
+}
+.form__row__cell {
+  display: flex;
+  gap: 4px;
+  width: 100%;
+
+  &.outer-cell {
+    gap: 16px;
+    width: 290px;
+  }
+  &.flex-column {
+    flex-direction: column;
+  }
+}
+.form__subheading {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 28px;
+}
+.form__txt-md {
+  display: inline-block;
+  font-size: 16px;
+  line-height: 24px;
+}
+.form__txt-sm {
+  display: inline-block;
+  font-size: 14px;
+  line-height: 20px;
+}
 
 
 
@@ -347,8 +450,10 @@ body {
   background-color: $gray-white;
   border-radius: 10px;
   margin: 20px 0;
+  transition: background-color 0.5s ease;
 
-  &.dark-theme {
+  &.dark-theme,
+  &:has(input[name="dark-theme"]:checked) {
     background-color: $black;
     
     .form-section__heading {
@@ -362,13 +467,18 @@ body {
     .form__elem-wrap {
       fill: $white;
     }
-    .form__label {
+    .form__label,
+    .form__heading,
+    .form__txt-md,
+    .form__subheading {
       color: #BAB9BD;
     }
     .form__input::placeholder {
       color: #5A5761;
     }
-    .form__input {
+    .form__input,
+    .form__select,
+    .form__textarea {
       background-color: #2E2A36;
       color: #99969E;
     }
@@ -394,13 +504,31 @@ body {
         background-color: $orange;
       }
     }
+    .checkbox__checkmark {
+      background-color: #2E2A36;
+      border: transparent;
+    }
+    .checkbox__chbox {
+      &:checked ~ .checkbox__checkmark {
+        background-color: $orange;
+      }
+    }
   }
 }
 
-@container wideForm (max-width: 440px) {
+@container wideForm (max-width: 540px) {
   .form__elem-wrap {
     &.flex {
       flex-wrap: wrap;
     }
+  }
+  .form__info-block {
+    display: none;
+  }
+  .form__row.outer-row {
+    flex-direction: column;
+  }
+  .form__row__cell.flex-to-row {
+    flex-direction: row;
   }
 }
