@@ -74,7 +74,7 @@ select {
 }
 
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100&family=Roboto+Condensed&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;700&family=Roboto+Condensed&display=swap');
 
 /*
  *  White theme colors
@@ -413,6 +413,9 @@ body {
   &.outer-row {
     padding-top: 16px;
   }
+  & > * {
+    flex-grow: 1;
+  }
 }
 .form__row__cell {
   display: flex;
@@ -425,6 +428,9 @@ body {
   }
   &.flex-column {
     flex-direction: column;
+  }
+  & > * {
+    flex-grow: 1;
   }
 }
 .form__subheading {
